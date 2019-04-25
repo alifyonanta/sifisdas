@@ -1,5 +1,8 @@
 package FORM;
-
+/**
+ *
+ * @author Alif Yonanta
+ */
 import java.awt.HeadlessException;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -305,7 +308,7 @@ public class ASPRAK extends javax.swing.JFrame {
         tabel1.addColumn("Password");
        
         try{
-            int n= 1;
+            int n = 1;
             pengaturanhasil = pernyataan.executeQuery("select * from asprak");
             while (pengaturanhasil.next())
             {

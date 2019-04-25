@@ -1,5 +1,8 @@
 package FORM;
-
+/**
+ *
+ * @author Alif Yonanta
+ */
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.DriverManager;
