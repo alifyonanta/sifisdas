@@ -279,8 +279,20 @@ public class ASPRAK extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "gagal");
         } catch (HeadlessException e) {}
     }//GEN-LAST:event_TNIMKeyPressed
-                                                                                              
-   
+    
+    //Membersihkan item
+    public void bersihkan()
+    {
+        TNIM.setText("");
+        TNAMA.setText("");
+        CJENISKELAMIN.setSelectedItem(null);
+        
+        
+        TPASSWORD.setText("");
+        TNOHP.setText("");
+        
+        TNIM.requestFocus();
+    }
 
     /**
      * @param args the command line arguments
