@@ -233,7 +233,27 @@ public class MODUL extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
- 
+    private void tampildata()
+    {
+        DefaultTableModel tabel1 = new DefaultTableModel();
+        tabel1.addColumn("NO");
+        tabel1.addColumn("ID Modul");
+        tabel1.addColumn("Nama Modul");
+
+        try{
+            int n= 1;
+            pengaturanhasil = pernyataan.executeQuery("select * from modul");
+            while (pengaturanhasil.next())
+            {
+                tabel1.addRow(new Object []{(n++),
+                pengaturanhasil.getString(1),
+                pengaturanhasil.getString(2)});
+            }
+            TABEL1.setModel(tabel1);
+        }catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
 
     /**
      * @param args the command line arguments
