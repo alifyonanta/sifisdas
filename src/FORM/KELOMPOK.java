@@ -198,7 +198,7 @@ public class KELOMPOK extends javax.swing.JFrame {
     }//GEN-LAST:event_BBATALActionPerformed
 
     private void BSIMPANActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSIMPANActionPerformed
-         try{
+        try{
             pernyataan.executeUpdate("insert into kelompok set  id_kelompok='"              +TIDKELOMPOK.getText()+"',"+
                 "nama_kelompok='"              +TNKELOMPOK.getText()+"'");
             JOptionPane.showMessageDialog(rootPane, "Data telah disimpan...");
@@ -206,6 +206,7 @@ public class KELOMPOK extends javax.swing.JFrame {
             bersihkan();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(rootPane, "Penyimpanan gagal...");
+        }catch (HeadlessException e) {}
     }//GEN-LAST:event_BSIMPANActionPerformed
 
     private void BKELUAR2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BKELUAR2ActionPerformed
