@@ -281,7 +281,7 @@ public class ASPRAK extends javax.swing.JFrame {
     }//GEN-LAST:event_TNIMKeyPressed
     
     //Membersihkan item
-    public void bersihkan()
+    private void bersihkan()
     {
         TNIM.setText("");
         TNAMA.setText("");
