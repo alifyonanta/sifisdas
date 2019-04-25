@@ -303,12 +303,13 @@ public class ASPRAK extends javax.swing.JFrame {
         tabel1.addColumn("Jenis Kelamin");
         tabel1.addColumn("No. HP");
         tabel1.addColumn("Password");
-        
-        try{            
+       
+        try{
+            int n= 1;
             pengaturanhasil = pernyataan.executeQuery("select * from asprak");
             while (pengaturanhasil.next())
             {
-                tabel1.addRow(new Object []{
+                tabel1.addRow(new Object []{(n++),
                 pengaturanhasil.getString(1),
                 pengaturanhasil.getString(2),
                 pengaturanhasil.getString(3),
