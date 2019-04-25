@@ -294,6 +294,32 @@ public class ASPRAK extends javax.swing.JFrame {
         TNIM.requestFocus();
     }
 
+    private void tampildata()
+    {
+        DefaultTableModel tabel1 = new DefaultTableModel();
+        tabel1.addColumn("NO");
+        tabel1.addColumn("kode_asprak");
+        tabel1.addColumn("Nama");
+        tabel1.addColumn("Jenis Kelamin");
+        tabel1.addColumn("No. HP");
+        tabel1.addColumn("Password");
+        
+        try{            
+            pengaturanhasil = pernyataan.executeQuery("select * from asprak");
+            while (pengaturanhasil.next())
+            {
+                tabel1.addRow(new Object []{
+                pengaturanhasil.getString(1),
+                pengaturanhasil.getString(2),
+                pengaturanhasil.getString(3),
+                pengaturanhasil.getString(4),
+                pengaturanhasil.getString(5)});
+            }
+            TABEL1.setModel(tabel1);
+        }catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
     /**
      * @param args the command line arguments
      */
