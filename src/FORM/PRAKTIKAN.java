@@ -221,10 +221,35 @@ public class PRAKTIKAN extends javax.swing.JFrame {
     }//GEN-LAST:event_TNIMCaretUpdate
 
     private void TNIMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNIMKeyPressed
+        try {
 
+            pengaturanhasil = pernyataan.executeQuery("select * from praktikan where NIM='"+TNIM.getText()+"'");
+
+            while (pengaturanhasil.next()){              
+                TNAMA.setText(pengaturanhasil.getString("nama_praktikan"));
+                CJENISKELAMIN.setSelectedItem(pengaturanhasil.getString("Jenis_Kelamin"));
+                TKELAS.setText(pengaturanhasil.getString("kelas"));
+                TIDKELOMPOK.setText(pengaturanhasil.getString("id_kelompok"));
+                TNOHP.setText(pengaturanhasil.getString("No_hp"));
+
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "gagal");
+        } catch (HeadlessException e) {}
     }//GEN-LAST:event_TNIMKeyPressed
                                                                                               
     private void bersihkan()
+    {
+        TNIM.setText("");
+        TNAMA.setText("");
+        CJENISKELAMIN.setSelectedItem(null);
+        TKELAS.setText("");
+        
+        TIDKELOMPOK.setText("");
+        TNOHP.setText("");
+        
+        TNIM.requestFocus();
+    }
     
     private void tampildata()
     {
@@ -237,8 +262,9 @@ public class PRAKTIKAN extends javax.swing.JFrame {
         tabel1.addColumn("ID Kelompok");
         tabel1.addColumn("Kelas");
 
+
         try{
-            int n = 1;
+            int n= 1;
             pengaturanhasil = pernyataan.executeQuery("select * from praktikan");
             while (pengaturanhasil.next())
             {
