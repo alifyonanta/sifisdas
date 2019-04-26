@@ -8,24 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class PRAKTIKAN extends javax.swing.JFrame {
     
-    private Connection  koneksi;
-    private Statement   pernyataan;
-    private ResultSet   pengaturanhasil;
-    private String      tanggal;
-    
-    public PRAKTIKAN() {
-        initComponents();
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            koneksi = DriverManager.getConnection("jdbc:mysql://localhost/fisdasv3","root","");
-            pernyataan = koneksi.createStatement();
-            
-        } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Koneksi gagal.. "+e);
-        } catch (SQLException e) {}
-        setLocationRelativeTo(null);
-        tampildata();
-    }
+   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -210,31 +193,11 @@ public class PRAKTIKAN extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BHAPUSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BHAPUSActionPerformed
-        try {
-            pernyataan.executeUpdate("delete from praktikan where NIM='"+TNIM.getText()+"'");
-            bersihkan();
-            tampildata();
-            JOptionPane.showMessageDialog(rootPane, "Terhapus");
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(rootPane, "Error");
-        } catch (HeadlessException e) {}
+
     }//GEN-LAST:event_BHAPUSActionPerformed
 
     private void BSIMPANActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSIMPANActionPerformed
-        try{
-            pernyataan.executeUpdate("insert into praktikan set  NIM='"+TNIM.getText()+"',"+
-                "nama_praktikan='"      +TNAMA.getText()+"',"+
-                "Jenis_Kelamin='"   +CJENISKELAMIN.getSelectedItem()+"',"+
-                "kelas='"    +TKELAS.getText()+"',"+
-                "id_kelompok='"         +TIDKELOMPOK.getText()+"',"+
-                "no_hp='"         +TNOHP.getText()+"'");
 
-            JOptionPane.showMessageDialog(rootPane, "Data Telah Disimpan");
-            TNIM.requestFocus();
-            bersihkan();
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(rootPane, "Penyimpanan gagal");
-        }catch (HeadlessException e) {}
     }//GEN-LAST:event_BSIMPANActionPerformed
 
     private void BKELUARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BKELUARActionPerformed
@@ -246,7 +209,7 @@ public class PRAKTIKAN extends javax.swing.JFrame {
     }//GEN-LAST:event_BPERBAHARUIActionPerformed
 
     private void BBATALActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBATALActionPerformed
-        bersihkan();
+        
     }//GEN-LAST:event_BBATALActionPerformed
 
     private void CJENISKELAMINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CJENISKELAMINActionPerformed
@@ -258,66 +221,10 @@ public class PRAKTIKAN extends javax.swing.JFrame {
     }//GEN-LAST:event_TNIMCaretUpdate
 
     private void TNIMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNIMKeyPressed
-        try {
 
-            pengaturanhasil = pernyataan.executeQuery("select * from praktikan where NIM='"+TNIM.getText()+"'");
-
-            while (pengaturanhasil.next()){              
-                TNAMA.setText(pengaturanhasil.getString("nama_praktikan"));
-                CJENISKELAMIN.setSelectedItem(pengaturanhasil.getString("Jenis_Kelamin"));
-                TKELAS.setText(pengaturanhasil.getString("kelas"));
-                TIDKELOMPOK.setText(pengaturanhasil.getString("id_kelompok"));
-                TNOHP.setText(pengaturanhasil.getString("No_hp"));
-
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "gagal");
-        } catch (HeadlessException e) {}
     }//GEN-LAST:event_TNIMKeyPressed
                                                                                               
-    private void bersihkan()
-    {
-        TNIM.setText("");
-        TNAMA.setText("");
-        CJENISKELAMIN.setSelectedItem(null);
-        TKELAS.setText("");
-        
-        TIDKELOMPOK.setText("");
-        TNOHP.setText("");
-        
-        TNIM.requestFocus();
-    }
     
-    private void tampildata()
-    {
-        DefaultTableModel tabel1 = new DefaultTableModel();
-        tabel1.addColumn("NO");
-        tabel1.addColumn("NIM");
-        tabel1.addColumn("Nama");
-        tabel1.addColumn("Jenis Kelamin");
-        tabel1.addColumn("No. HP");
-        tabel1.addColumn("ID Kelompok");
-        tabel1.addColumn("Kelas");
-
-
-        try{
-            int n= 1;
-            pengaturanhasil = pernyataan.executeQuery("select * from praktikan");
-            while (pengaturanhasil.next())
-            {
-                tabel1.addRow(new Object []{(n++),
-                pengaturanhasil.getString(1),
-                pengaturanhasil.getString(2),
-                pengaturanhasil.getString(3),
-                pengaturanhasil.getString(4),
-                pengaturanhasil.getString(5),
-                pengaturanhasil.getString(6)});
-            }
-            TABEL1.setModel(tabel1);
-        }catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-    }
 
     /**
      * @param args the command line arguments
