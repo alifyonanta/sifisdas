@@ -224,7 +224,7 @@ public class PRAKTIKAN extends javax.swing.JFrame {
 
     }//GEN-LAST:event_TNIMKeyPressed
                                                                                               
-    
+    private void bersihkan()
     
     private void tampildata()
     {
@@ -250,7 +250,7 @@ public class PRAKTIKAN extends javax.swing.JFrame {
                 pengaturanhasil.getString(5),
                 pengaturanhasil.getString(6)});
             }
-            TABEL1.setModel(pengaturanhasil);
+            TABEL1.setModel(tabel1);
         }catch (Exception e) {
             System.err.println(e.getMessage());
         }
