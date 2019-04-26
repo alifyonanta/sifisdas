@@ -225,6 +225,36 @@ public class PRAKTIKAN extends javax.swing.JFrame {
     }//GEN-LAST:event_TNIMKeyPressed
                                                                                               
     
+    
+    private void tampildata()
+    {
+        DefaultTableModel tabel1 = new DefaultTableModel();
+        tabel1.addColumn("NO");
+        tabel1.addColumn("NIM");
+        tabel1.addColumn("Nama");
+        tabel1.addColumn("Jenis Kelamin");
+        tabel1.addColumn("No. HP");
+        tabel1.addColumn("ID Kelompok");
+        tabel1.addColumn("Kelas");
+
+        try{
+            int n = 1;
+            pengaturanhasil = pernyataan.executeQuery("select * from praktikan");
+            while (pengaturanhasil.next())
+            {
+                tabel1.addRow(new Object []{(n++),
+                pengaturanhasil.getString(1),
+                pengaturanhasil.getString(2),
+                pengaturanhasil.getString(3),
+                pengaturanhasil.getString(4),
+                pengaturanhasil.getString(5),
+                pengaturanhasil.getString(6)});
+            }
+            TABEL1.setModel(pengaturanhasil);
+        }catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
 
     /**
      * @param args the command line arguments
